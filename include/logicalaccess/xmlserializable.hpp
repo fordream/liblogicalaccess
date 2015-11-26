@@ -17,11 +17,12 @@
 #pragma warning (default : 4005)
 #endif
 
+#include <boost/asio.hpp>
 #ifdef _MSC_VER
 #ifdef __cplusplus
-#include <WinSock2.h>
+//#include <WinSock2.h>
 #endif
-#include <windows.h>
+//#include <windows.h>
 ///* replace stdint.h type for MS Windows*/
 //typedef __int8 int8_t;
 //typedef unsigned __int8 uint8_t;

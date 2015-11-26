@@ -1,13 +1,12 @@
 #include "logicalaccess/iks/packet/Base.hpp"
 
 #include <cstring>
-#include <arpa/inet.h>
+#include <boost/asio.hpp>
 #include <assert.h>
 #include <logicalaccess/logs.hpp>
 #include <logicalaccess/myexception.hpp>
 #include "logicalaccess/key.hpp"
-#include "../../../plugins/pluginscards/desfire/nxpav1keydiversification.hpp"
-#include "../../../plugins/pluginscards/desfire/nxpav2keydiversification.hpp"
+#include <logicalaccess/cards/keydiversification.hpp>
 
 using namespace logicalaccess;
 using namespace logicalaccess::iks;
@@ -102,18 +101,14 @@ KeyDivInfo KeyDivInfo::build(std::shared_ptr<Key> key,
     auto kd       = KeyDivInfo();
     kd.div_input_ = divinput;
 
-    if (std::dynamic_pointer_cast<NXPAV1KeyDiversification>(
-            key->getKeyDiversification()))
-    {
+	if (key->getKeyDiversification()->getType() == "NXPAV1")
+	{
         kd.flag_ = KEYDIV_ALGO_NXP_AV1;
     }
-    else if (std::dynamic_pointer_cast<NXPAV2KeyDiversification>(
-                 key->getKeyDiversification()))
+	if (key->getKeyDiversification()->getType() == "NXPAV2")
     {
         kd.flag_ = KEYDIV_ALGO_NXP_AV2;
     }
-
-
     return kd;
 }
 

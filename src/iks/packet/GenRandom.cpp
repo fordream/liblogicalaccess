@@ -1,7 +1,6 @@
 #include "logicalaccess/iks/packet/GenRandom.hpp"
 #include <cstring>
-#include <arpa/inet.h>
-
+#include <boost/asio.hpp>
 
 using namespace logicalaccess;
 using namespace logicalaccess::iks;
