@@ -1,7 +1,7 @@
 #include "logicalaccess/iks/packet/Base.hpp"
 
 #include <cstring>
-#include <boost/asio.hpp>
+#include <logicalaccess/utils.hpp>
 #include <assert.h>
 #include <logicalaccess/logs.hpp>
 #include <logicalaccess/myexception.hpp>
@@ -17,8 +17,8 @@ std::vector<uint8_t> BaseCommand::serialize() const
     uint16_t op;
 
     std::vector<uint8_t> ret(6);
-    full_size = htonl(static_cast<uint32_t>(binary_size()));
-    op        = htons(opcode_);
+    full_size = logicalaccess::htonl(static_cast<uint32_t>(binary_size()));
+    op        = logicalaccess::htons(opcode_);
 
     memcpy(&ret[0], &full_size, sizeof(full_size));
     memcpy(&ret[sizeof(full_size)], &op, sizeof(op));

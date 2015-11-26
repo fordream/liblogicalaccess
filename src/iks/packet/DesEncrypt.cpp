@@ -1,5 +1,4 @@
 #include <cstring>
-#include <boost/asio.hpp>
 #include "logicalaccess/iks/packet/DesEncrypt.hpp"
 #include "logicalaccess/logs.hpp"
 

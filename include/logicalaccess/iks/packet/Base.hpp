@@ -6,6 +6,7 @@
 #include <cstddef>
 #include <memory>
 #include "logicalaccess/logicalaccess_api.hpp"
+#include "logicalaccess/utils.hpp"
 
 namespace logicalaccess
 {
